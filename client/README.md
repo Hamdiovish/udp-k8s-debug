@@ -1,0 +1,1 @@
+> docker build -t udp-client:1.0.0  .

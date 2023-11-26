@@ -1,0 +1,10 @@
+version: '3'
+services:
+  udp-server:
+    container_name: udp-server
+    image: registry:1.0.1
+    ports:
+      - "9090:9090/udp"
+    environment:
+      - HOST=0.0.0.0
+      - PORT=9090

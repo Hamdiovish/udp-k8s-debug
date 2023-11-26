@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: udp-server-deployment
+  labels:
+    app: udp-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: udp-server
+  template:
+    metadata:
+      labels:
+        app: udp-server
+    spec:
+      containers:
+      - name: udp-server
+        image: registry:5000/udp-server:1.0.1
+        env:
+        - name: PORT
+          value: "9090"
+        - name: HOST
+          value: "0.0.0.0"
+        ports:
+        - containerPort: 9090
+          hostPort: 30125
+          protocol: UDP
+      nodeSelector:
+        gameserver: "true"
